@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary:   #06ffa5;   /* electric mint */
+  --secondary: #f72585;   /* hot pink      */
+  --bg:        #08080f;
+  --card:      #0f0f1e;
+  --card-2:    #13132a;
+}
+
+/* ─── Base ─── */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: #f1f5f9;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Subtle mesh gradient overlay on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 10%, rgba(6,255,165,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(247,37,133,0.06) 0%, transparent 60%);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--primary), var(--secondary));
+  border-radius: 3px;
+}
+
+/* ─── Selection ─── */
+::selection { background: rgba(6,255,165,0.25); color: #fff; }
+
+/* ─── Gradient text ─── */
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(6,255,165,0.2), rgba(247,37,133,0.2), transparent);
+  }
+
+  /* Glow border utility */
+  .glow-primary {
+    box-shadow: 0 0 20px rgba(6,255,165,0.3), 0 0 40px rgba(6,255,165,0.1);
+  }
+  .glow-secondary {
+    box-shadow: 0 0 20px rgba(247,37,133,0.3), 0 0 40px rgba(247,37,133,0.1);
+  }
+}
+
+/* ─── Typed cursor ─── */
+.typed-cursor { color: var(--primary); font-weight: 300; }
+
+/* ─── Nav link underline ─── */
+.nav-link {
+  position: relative;
+  color: #94a3b8;
+  transition: color 0.2s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 0.3s;
+}
+.nav-link:hover { color: #f1f5f9; }
+.nav-link:hover::after { width: 100%; }
+
+/* ─── Scroll dot ─── */
+@keyframes scrollDot {
+  0%   { transform: translateY(0); opacity: 1; }
+  80%  { transform: translateY(12px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+.scroll-dot { animation: scrollDot 1.8s ease-in-out infinite; }
+
+/* ─── Progress bar ─── */
+.progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ─── Grid bg (hero) ─── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(6,255,165,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6,255,165,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* ─── Avatar ring ─── */
+.avatar-ring {
+  padding: 3px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ─── Noise grain texture overlay (optional atmosphere) ─── */
+@keyframes noiseShift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 200px 200px; }
+}
