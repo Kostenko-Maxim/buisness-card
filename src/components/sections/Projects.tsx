@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ProjectCard, { type Project } from '../ui/ProjectCard';
 import { SectionHeading } from './About';
 import { useLang } from '../../hooks/useLang';
+import HackathonCard from '../ui/HackathonCard';
 
 export default function Projects() {
   const { t } = useLang();
@@ -60,6 +61,8 @@ export default function Projects() {
         >
           {t('projects.subtitle')}
         </motion.p>
+
+        <HackathonCard />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {PROJECTS.map((project, i) => (

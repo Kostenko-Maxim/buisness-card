@@ -2,6 +2,7 @@ import { LangContext, useLangState } from './hooks/useLang';
 import { useLang } from './hooks/useLang';
 import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { config } from '@fortawesome/fontawesome-svg-core';
 import { faGithub, faLinkedinIn, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import Navbar     from './components/Navbar';
 import Hero       from './components/sections/Hero';
@@ -11,7 +12,10 @@ import Skills     from './components/sections/Skills';
 import Projects   from './components/sections/Projects';
 import TelegramChannel from './components/sections/TelegramChannel';
 import Contact    from './components/sections/Contact';
-import { Analytics } from "@vercel/analytics/next"
+import { AnimatePresence } from 'framer-motion';
+import type { Lang } from './i18n/translations';
+
+config.autoAddCss = false;
 
 function Divider() {
   return <div className="section-divider" />;
@@ -34,29 +38,34 @@ function Footer() {
   );
 }
 
-export default function App() {
-  const langState = useLangState();
+export default function App({ initialLang = 'ru' }: { initialLang?: Lang }) {
+  const langState = useLangState(initialLang);
   useSmoothScroll();
 
   return (
     <LangContext.Provider value={langState}>
-      <Navbar />
-      <main>
-        <Hero />
-        <Divider />
-        <About />
-        <Divider />
-        <Experience />
-        <Divider />
-        <Skills />
-        <Divider />
-        <Projects />
-        <Divider />
-        <TelegramChannel />
-        <Divider />
-        <Contact />
-      </main>
-      <Footer />
+      {/* Keep prerendered content visible before JavaScript and during hydration. */}
+      <AnimatePresence initial={false}>
+        <div key="portfolio">
+          <Navbar />
+          <main>
+            <Hero />
+            <Divider />
+            <About />
+            <Divider />
+            <Experience />
+            <Divider />
+            <Skills />
+            <Divider />
+            <Projects />
+            <Divider />
+            <TelegramChannel />
+            <Divider />
+            <Contact />
+          </main>
+          <Footer />
+        </div>
+      </AnimatePresence>
     </LangContext.Provider>
   );
 }

@@ -1,3 +1,9 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/en", "destination": "/en/", "permanent": true },
+    { "source": "/en/index.html", "destination": "/en/", "permanent": true }
+  ],
+  "rewrites": [{ "source": "/en/", "destination": "/en/index.html" }]
 }

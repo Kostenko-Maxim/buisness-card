@@ -13,12 +13,11 @@ export const LangContext = createContext<LangContextValue>({
   t: (key) => key,
 });
 
-export function useLangState(): LangContextValue {
-  const [lang, setLangState] = useState<Lang>('ru');
+export function useLangState(initialLang: Lang = 'ru'): LangContextValue {
+  const [lang] = useState<Lang>(initialLang);
 
   const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    document.documentElement.lang = l;
+    window.location.assign(`${l === 'en' ? '/en/' : '/'}${window.location.hash}`);
   }, []);
 
   const t = useCallback(

@@ -130,9 +130,13 @@ function LangToggle({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void 
   return (
     <div className="flex items-center gap-1">
       {(['ru', 'en'] as Lang[]).map((l) => (
-        <button
+        <a
           key={l}
-          onClick={() => setLang(l)}
+          href={l === 'en' ? '/en/' : '/'}
+          hrefLang={l}
+          lang={l}
+          aria-current={lang === l ? 'page' : undefined}
+          onClick={(event) => { event.preventDefault(); setLang(l); }}
           className={`font-mono text-[0.72rem] px-[10px] py-1 rounded cursor-pointer transition-all ${
             lang === l
               ? 'text-white'
@@ -145,7 +149,7 @@ function LangToggle({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void 
           }
         >
           {l.toUpperCase()}
-        </button>
+        </a>
       ))}
     </div>
   );

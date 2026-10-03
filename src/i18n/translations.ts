@@ -2,6 +2,13 @@ export type Lang = 'ru' | 'en'
 
 const translations = {
 	ru: {
+		'hackathon.event': 'Участие в хакатоне «Лидеры цифровой трансформации»',
+		'hackathon.title': 'RESTораторы — маршрутизация выездных инженеров',
+		'hackathon.role': 'Моя роль: инженер данных и ML-инженер · Команда из 4 человек',
+		'hackathon.task': 'Задача №13: интеллектуальный сервис планирования рабочих маршрутов для инженеров с учётом временных окон и сложности работ.',
+		'hackathon.desc': 'В составе команды разработали автономный сервис распределения заявок и построения маршрутов на день. Решение поддерживает загрузку CSV без дублирования данных, перепланирование и объяснение причин неназначенных заявок. Локальные карты и маршрутизация позволяют работать без доступа к внешнему интернету.',
+		'hackathon.presentation': 'Скачать презентацию',
+		'hackathon.website': 'Сайт хакатона',
 		'exp.certificates': 'Сертификаты Яндекс Практикума',
 		'exp.certificateRu': 'Сертификат ru',
 		'exp.certificateEn': 'Сертификат en',
@@ -115,14 +122,13 @@ const translations = {
 		'contact.subtitle':
 			'Открыт к предложениям · Москва · Полная занятость / Удалённо',
 		'contact.formTitle': 'Обсудим ваше предложение',
+		'contact.formNote': 'Имя, email и сообщение передаются через FormSubmit, чтобы я мог получить ваше предложение и ответить.',
 		'contact.name': 'Ваше имя',
 		'contact.email': 'Email для ответа',
 		'contact.message': 'Ваше предложение',
 		'contact.messagePlaceholder':
 			'Расскажите о проекте, вакансии или идее сотрудничества (от 10 символов)',
 		'contact.send': 'Отправить предложение',
-		'contact.formNote':
-			'Имя, email и сообщение передаются через FormSubmit, чтобы я мог получить ваше предложение и ответить.',
 		'contact.sending': 'Отправляем…',
 		'contact.success':
 			'Предложение принято сервисом отправки. Спасибо за обращение!',
@@ -134,6 +140,13 @@ const translations = {
 	},
 
 	en: {
+		'hackathon.event': 'Leaders of Digital Transformation hackathon participant',
+		'hackathon.title': 'RESTораторы — field engineer route planning',
+		'hackathon.role': 'My role: Data Engineer and ML Engineer · Team of 4',
+		'hackathon.task': 'Challenge #13: an intelligent route planning service for engineers, accounting for time windows and job complexity.',
+		'hackathon.desc': 'Our team developed a self-contained service for assigning jobs and planning daily routes. It supports duplicate-safe CSV imports, replanning, and explanations for unassigned jobs. Local maps and routing allow the service to operate without external internet access.',
+		'hackathon.presentation': 'Download presentation',
+		'hackathon.website': 'Hackathon website',
 		'exp.certificates': 'Yandex Practicum certificates',
 		'exp.certificateRu': 'Certificate in Russian',
 		'exp.certificateEn': 'Certificate in English',
@@ -239,14 +252,13 @@ const translations = {
 
 		'contact.subtitle': 'Open to offers · Moscow · Full-time / Remote',
 		'contact.formTitle': 'Let’s discuss your proposal',
+		'contact.formNote': 'Your name, email and message are sent via FormSubmit so I can receive your proposal and reply.',
 		'contact.name': 'Your name',
 		'contact.email': 'Email for replies',
 		'contact.message': 'Your proposal',
 		'contact.messagePlaceholder':
 			'Tell me about your project, vacancy or collaboration idea (at least 10 characters)',
 		'contact.send': 'Send proposal',
-		'contact.formNote':
-			'Your name, email and message are sent via FormSubmit so I can receive your proposal and reply.',
 		'contact.sending': 'Sending…',
 		'contact.success':
 			'Your proposal has been accepted by the sending service. Thank you!',

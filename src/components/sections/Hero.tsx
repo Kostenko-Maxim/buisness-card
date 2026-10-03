@@ -77,9 +77,9 @@ export default function Hero() {
           {...fade(0.2)}
           className="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4 leading-tight"
         >
-          Максим{' '}
+          {lang === 'ru' ? 'Максим' : 'Maxim'}{' '}
           <span className="gradient-text" style={{ filter: 'drop-shadow(0 0 30px rgba(6,255,165,0.3))' }}>
-            Костенко
+            {lang === 'ru' ? 'Костенко' : 'Kostenko'}
           </span>
         </motion.h1>
 
@@ -89,7 +89,8 @@ export default function Hero() {
           className="text-xl sm:text-2xl md:text-3xl font-light mb-6 text-slate-300 h-10 flex items-center justify-center gap-3"
         >
           <span className="font-mono text-lg" style={{ color: '#f72585' }}>&gt;</span>
-          <span ref={typedRef} />
+          <span className="sr-only">Data Engineer · ETL Developer · Python Developer</span>
+          <span ref={typedRef} aria-hidden="true">Data Engineer</span>
         </motion.div>
 
         {/* Description */}

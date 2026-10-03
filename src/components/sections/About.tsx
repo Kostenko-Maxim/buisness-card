@@ -45,6 +45,10 @@ export default function About() {
               <img
                 src="/avatar.png"
                 alt="Максим Костенко"
+                width={208}
+                height={208}
+                loading="lazy"
+                decoding="async"
                 className="w-44 h-44 sm:w-52 sm:h-52 rounded-full object-cover block"
                 style={{ objectPosition: 'center top' }}
               />

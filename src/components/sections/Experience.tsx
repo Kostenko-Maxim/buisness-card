@@ -51,7 +51,7 @@ const ENTRIES: ExpEntry[] = [
 ];
 
 export default function Experience() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   return (
     <section id="experience" className="py-24 px-6">
@@ -115,7 +115,7 @@ export default function Experience() {
                               className="text-[0.65rem] font-mono px-2 py-0.5 rounded-full"
                               style={{ background: 'rgba(6,255,165,0.12)', color: '#06ffa5', border: '1px solid rgba(6,255,165,0.35)' }}
                             >
-                              сейчас
+                              {lang === 'ru' ? 'сейчас' : 'current'}
                             </span>
                           )}
                         </div>
