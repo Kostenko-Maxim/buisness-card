@@ -4,6 +4,7 @@ import Typed from 'typed.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faFolderOpen } from '@fortawesome/free-solid-svg-icons';
 import { useLang } from '../../hooks/useLang';
+import { scrollToSection } from '../../hooks/useSmoothScroll';
 import ParticlesCanvas from '../ParticlesCanvas';
 
 const fade = (delay = 0) => ({
@@ -31,9 +32,6 @@ export default function Hero() {
     return () => { typedInst.current?.destroy(); };
   }, [lang]);
 
-  const scrollTo = (id: string) =>
-    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
   return (
     <section
       id="hero"
@@ -49,7 +47,20 @@ export default function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] rounded-full opacity-[0.03] blur-[80px] pointer-events-none"
            style={{ background: 'radial-gradient(ellipse, #f72585, #06ffa5, transparent 70%)' }} />
 
-      <div className="relative z-10 max-w-container mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-container mx-auto px-6 pt-24 pb-32 text-center">
+
+        <motion.div {...fade()} className="mb-8 flex justify-center">
+          <div className="avatar-ring shadow-[0_0_40px_rgba(6,255,165,0.12)]">
+            <img
+              src="/avatar.png"
+              alt={lang === 'ru' ? 'Максим Костенко' : 'Maxim Kostenko'}
+              width={208}
+              height={208}
+              fetchPriority="high"
+              className="h-44 w-44 sm:h-52 sm:w-52 rounded-full object-cover object-[50%_20%]"
+            />
+          </div>
+        </motion.div>
 
         {/* Available badge */}
         <motion.div
@@ -89,9 +100,7 @@ export default function Hero() {
         {/* CTA buttons */}
         <motion.div {...fade(0.65)} className="flex flex-wrap justify-center gap-4">
           <a
-            href="mailto:kostenko.maxim@yahoo.com"
-            target="_blank"
-            rel="noreferrer"
+            href="#contact"
             className="group inline-flex items-center gap-2 px-7 py-3 rounded-lg font-semibold text-sm text-[#08080f] transition-all"
             style={{ background: 'linear-gradient(135deg, #06ffa5, #f72585)' }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(6,255,165,0.4), 0 4px 16px rgba(247,37,133,0.3)'; (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; }}
@@ -101,7 +110,7 @@ export default function Hero() {
             {t('hero.btnContact')}
           </a>
           <button
-            onClick={() => scrollTo('#projects')}
+            onClick={() => scrollToSection('#projects')}
             className="inline-flex items-center gap-2 px-7 py-3 rounded-lg font-semibold text-sm transition-all"
             style={{ border: '1px solid rgba(6,255,165,0.5)', color: '#06ffa5' }}
             onMouseEnter={(e) => {
@@ -122,12 +131,14 @@ export default function Hero() {
           </button>
         </motion.div>
 
+      </div>
+
         {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1, duration: 0.8 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+          className="absolute z-10 bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           style={{ color: 'rgba(6,255,165,0.4)' }}
         >
           <span className="text-xs font-mono tracking-widest uppercase">{t('hero.scroll')}</span>
@@ -136,7 +147,6 @@ export default function Hero() {
             <div className="w-1 h-2 rounded-full scroll-dot" style={{ background: 'rgba(6,255,165,0.6)' }} />
           </div>
         </motion.div>
-      </div>
     </section>
   );
 }

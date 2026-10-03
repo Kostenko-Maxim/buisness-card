@@ -1,5 +1,6 @@
 import { LangContext, useLangState } from './hooks/useLang';
 import { useLang } from './hooks/useLang';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedinIn, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import Navbar     from './components/Navbar';
@@ -8,6 +9,7 @@ import About      from './components/sections/About';
 import Experience from './components/sections/Experience';
 import Skills     from './components/sections/Skills';
 import Projects   from './components/sections/Projects';
+import TelegramChannel from './components/sections/TelegramChannel';
 import Contact    from './components/sections/Contact';
 import { Analytics } from "@vercel/analytics/next"
 
@@ -34,6 +36,7 @@ function Footer() {
 
 export default function App() {
   const langState = useLangState();
+  useSmoothScroll();
 
   return (
     <LangContext.Provider value={langState}>
@@ -48,6 +51,8 @@ export default function App() {
         <Skills />
         <Divider />
         <Projects />
+        <Divider />
+        <TelegramChannel />
         <Divider />
         <Contact />
       </main>

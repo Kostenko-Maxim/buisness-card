@@ -5,6 +5,7 @@ import { faGithub, faLinkedinIn, faTelegram } from '@fortawesome/free-brands-svg
 import type { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { SectionHeading } from './About';
 import { useLang } from '../../hooks/useLang';
+import ContactForm from '../ui/ContactForm';
 
 interface ContactLink {
   icon: IconProp;
@@ -16,7 +17,7 @@ const LINKS: ContactLink[] = [
   { icon: faGithub,     label: 'GitHub',   href: 'https://github.com/Kostenko-Maxim'                      },
   { icon: faLinkedinIn, label: 'LinkedIn', href: 'https://www.linkedin.com/in/maxim-kostenko-8a8b433a9/'  },
   { icon: faTelegram,   label: 'Telegram', href: 'https://t.me/maksimkostenk0'                            },
-  { icon: faEnvelope,   label: 'Email',    href: 'mailto:kostenko.maxim@yahoo.com'                        },
+  { icon: faEnvelope,   label: 'Email',    href: 'mailto:maxim.kostenkoo@yandex.ru'                        },
 ];
 
 export default function Contact() {
@@ -36,6 +37,8 @@ export default function Contact() {
         >
           {t('contact.subtitle')}
         </motion.p>
+
+        <ContactForm />
 
         {/* Contact cards */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-12">
@@ -74,14 +77,14 @@ export default function Contact() {
 
         {/* Email direct link */}
         <motion.a
-          href="mailto:kostenko.maxim@yahoo.com"
+          href="mailto:maxim.kostenkoo@yandex.ru"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="text-slate-500 hover:text-slate-200 transition-colors text-sm font-mono border-b border-slate-700 hover:border-slate-400 pb-1"
         >
-          kostenko.maxim@yahoo.com
+          maxim.kostenkoo@yandex.ru
         </motion.a>
       </div>
     </section>

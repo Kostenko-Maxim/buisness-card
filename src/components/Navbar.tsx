@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLang } from '../hooks/useLang';
+import { scrollToSection } from '../hooks/useSmoothScroll';
 import type { TranslationKey } from '../i18n/translations';
 import type { Lang } from '../i18n/translations';
 
@@ -36,8 +37,7 @@ export default function Navbar() {
   const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     closeMobile();
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollToSection(href);
   };
 
   return (

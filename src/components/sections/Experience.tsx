@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
+import { faBriefcase, faFilePdf, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { SectionHeading } from './About';
 import { useLang } from '../../hooks/useLang';
 import type { TranslationKey } from '../../i18n/translations';
@@ -13,6 +13,7 @@ interface ExpEntry {
   tagKeys:     TranslationKey[];
   accent:      'blue' | 'purple';
   current:     boolean;
+  certificates?: { labelKey: TranslationKey; href: string }[];
 }
 
 const ENTRIES: ExpEntry[] = [
@@ -27,6 +28,10 @@ const ENTRIES: ExpEntry[] = [
   },
   {
     companyKey:  'exp2.company',
+    certificates: [
+      { labelKey: 'exp.certificateRu', href: '/certificates/yandex-practicum-data-science-ru.pdf' },
+      { labelKey: 'exp.certificateEn', href: '/certificates/yandex-practicum-data-science-en.pdf' },
+    ],
     positionKey: 'exp2.position',
     periodKey:   'exp2.period',
     descKey:     'exp2.desc',
@@ -144,6 +149,29 @@ export default function Experience() {
                         </span>
                       ))}
                     </div>
+                    {entry.certificates && (
+                      <div className="mt-6 border-t border-white/10 pt-5">
+                        <h4 className="text-sm font-semibold text-slate-200 mb-3">
+                          {t('exp.certificates')}
+                        </h4>
+                        <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+                          {entry.certificates.map(({ labelKey, href }) => (
+                            <a
+                              key={href}
+                              href={href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center justify-center gap-3 rounded-lg border border-purple-500/30 bg-purple-500/5 px-4 py-3 text-sm text-purple-300 transition-colors hover:border-purple-400/60 hover:bg-purple-500/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-purple-400"
+                            >
+                              <FontAwesomeIcon icon={faFilePdf} />
+                              <span>{t(labelKey)}</span>
+                              <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="text-xs" />
+                            </a>
+                          ))}
+                        </div>
+                        <p className="mt-3 text-xs text-slate-500">{t('exp.certificateHint')}</p>
+                      </div>
+                    )}
                   </motion.div>
                 </motion.div>
               );
